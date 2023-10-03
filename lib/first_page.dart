@@ -12,30 +12,23 @@ class FirstPage extends StatelessWidget {
         backgroundColor: Colors.green,
         title: text,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network('https://picsum.photos/250?image=9'),
-              TextField(
-                onChanged: (text){
-                  this.nameText = text;
-                },
-              ),
-              ElevatedButton  (
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SecondPage(this.nameText)
-                      )
-                  );
-                },
-                child: const Text('ボタン'),
-              ),
-            ],
-          ),
+      body: Container(
+        width: double.infinity,
+        child: ListView(
+          children: <Widget> [
+            ListTile(
+              leading:  Icon(Icons.map),
+              title: Text('Map'),
+            ),
+            ListTile (
+              leading: Icon(Icons.photo_album),
+              title: Text('Album'),
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+            ),
+          ],
         ),
       ),
     );

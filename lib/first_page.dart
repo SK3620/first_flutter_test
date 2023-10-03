@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'second_page.dart';
 
-class FirstPage extends StatelessWidget {
+// リスト一覧画面用Widget
+class ToDoListPage extends StatelessWidget {
   String nameText = '';
 
   @override
@@ -10,30 +11,22 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: text,
+        title: Text('My Todo App'),
       ),
-      body: Container(
-        width: double.infinity,
-        child: ListView(
-          children: <Widget> [
-            ListTile(
-              leading:  Icon(Icons.map),
-              title: Text('Map'),
-            ),
-            ListTile (
-              leading: Icon(Icons.photo_album),
-              title: Text('Album'),
-            ),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('Phone'),
-            ),
-          ],
-        ),
+      body: Center(
+        child: Text('リスト画面一覧'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // "push"画面で新規画面に遷移
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) {
+              return SecondPage();
+            }),
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
-
-  final text = Text('FirstPage');
-
 }

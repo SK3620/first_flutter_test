@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'first_page.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(//アプリの土台
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: ToDoListPage(),
+      home: GridViewDemo(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

@@ -3,6 +3,46 @@ import 'package:flutter/material.dart';
 import 'second_page.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+class GridViewDemo extends StatelessWidget {
+
+  final List<String> texts = [
+    'ToDoApp', 'InstagramDemoApp', 'FireabseApp', 'TimerApp', 'ChatGPTAPI', 'YouTubeAPI'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Gridview デモ'),
+        ),
+        body: GridView.builder(
+          padding: const EdgeInsets.all(20), //4辺すべて同じ値の余白
+          itemCount: texts.length, //要素の数　表示するデータ数の最大値（texts　listの最大値）
+          // GridViewを設定する引数を指定
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 10,     //ボックス左右間のスペース
+            mainAxisSpacing: 10,      //ボックス上下間のスペース
+            crossAxisCount: 2,        //ボックスを横に並べる数
+          ),
+          //指定した要素の数分を生成
+          itemBuilder: (BuildContext context, int index) {
+            // Widget型をreturnする
+            return Container(
+              color: Colors.blue.shade100,
+              child: Center(child: Text(this.texts[index],
+                style: TextStyle(fontSize: 24,),
+              )),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
 class ToDoListPage extends StatefulWidget {
 
   // createState()で状態オブジェクトとしてToDoListPageStateオブジェクトを生成/ウィジェットの状態を管理

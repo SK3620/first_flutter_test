@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'first_page.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,8 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp(//アプリの土台
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       home: ToDoListPage(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

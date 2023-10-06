@@ -4,8 +4,9 @@ import 'second_page.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoListPage extends StatefulWidget {
-@override
-ToDoListPageState createState() => ToDoListPageState();
+
+  // createState()で状態オブジェクトとしてToDoListPageStateオブジェクトを生成/ウィジェットの状態を管理
+  @override ToDoListPageState createState() => ToDoListPageState();
 }
 
 // リスト一覧画面用Widget

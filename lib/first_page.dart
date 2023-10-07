@@ -1,3 +1,5 @@
+import 'package:first_flutter_test/Instagram.dart';
+import 'package:first_flutter_test/todo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'second_page.dart';
@@ -24,6 +26,12 @@ class GridViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /*
+      initialRoute: '/', // 初期画面を'/'とする
+      routes: {
+    '/ToDoApp': (context) => NewPage(), // NewPage()を'/ToDoApp'とする
+    },
+      */
       home: Scaffold(
         appBar: AppBar(
           title: Text('Flutter Apps',
@@ -60,34 +68,47 @@ class GridViewDemo extends StatelessWidget {
             ),
             //指定した要素の数分を生成
             itemBuilder: (BuildContext context, int index) {
-
-              // Widget型sfezをreturnする
-              return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10), // containerの右左の余白幅10
-                  decoration: BoxDecoration(
-                    // shape: BoxShape.circle, // 丸い形状
-                    borderRadius: BorderRadius.circular(20), // radius設定
-                    color: this.backgroundColor[index], // Container背景色
-                    // color: Colors.transparent, // 背景色透明
-                    // border: Border.all(color: this.backgroundColor[index], width: 3),
-                    boxShadow: [ // itemに影つける
-                      BoxShadow(
-                        color: Colors.black26, //色
-                        spreadRadius: 5,
-                        blurRadius: 5,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                  ),
-                  child: Center(child: Text(this.texts[index],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+              return InkWell(// タッチフィードバックを提供 「インクスプラッシュ」（水滴が水面に落ちるようなエフェクト）を表示 いろんな引数あり カスタマイズ可
+                onTap: (){
+                  if (index == 0) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Todo(),
+                    fullscreenDialog: true
                     ),
-                  )),
-                );
+                    );
+                  } else if (index == 1) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Instagram(),
+                    fullscreenDialog: true,
+                    ),
+                    );
+                  }
+                },
+                child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10), // containerの右左の余白幅10
+                    decoration: BoxDecoration(
+                      // shape: BoxShape.circle, // 丸い形状
+                      borderRadius: BorderRadius.circular(20), // radius設定
+                      color: this.backgroundColor[index], // Container背景色
+                      // color: Colors.transparent, // 背景色透明
+                      // border: Border.all(color: this.backgroundColor[index], width: 3),
+                      boxShadow: [ // itemに影つける
+                        BoxShadow(
+                          color: Colors.black26, //色
+                          spreadRadius: 5,
+                          blurRadius: 5,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
+                    ),
+                    child: Center(child: Text(this.texts[index],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    )),
+                  ),
+              );
             },
           ),
         ),

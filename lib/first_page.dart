@@ -6,34 +6,90 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 class GridViewDemo extends StatelessWidget {
 
   final List<String> texts = [
-    'ToDoApp', 'InstagramDemoApp', 'FireabseApp', 'TimerApp', 'ChatGPTAPI', 'YouTubeAPI'
+    'ToDo\nApp', 'InstaDemo\nApp', 'Fireabse\nApp', 'Timer\nApp', 'ChatGPTAPI\nApp', 'YouTubeAPI\nApp', 'ComingSoon', 'ComingSoon'
+  ];
+
+  // gridViewのContainer背景色
+  final List<Color> backgroundColor = [
+    Colors.blue,
+    Colors.red,
+    Colors.green,
+    Colors.yellow,
+    Colors.orange,
+    Colors.purple,
+    Colors.pinkAccent,
+    Colors.brown,
   ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Gridview デモ'),
-        ),
-        body: GridView.builder(
-          padding: const EdgeInsets.all(20), //4辺すべて同じ値の余白
-          itemCount: texts.length, //要素の数　表示するデータ数の最大値（texts　listの最大値）
-          // GridViewを設定する引数を指定
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: 10,     //ボックス左右間のスペース
-            mainAxisSpacing: 10,      //ボックス上下間のスペース
-            crossAxisCount: 2,        //ボックスを横に並べる数
+        appBar: AppBar(
+          title: Text('Flutter Apps',
+            style: TextStyle(
+              color: Colors.black
+            ),
           ),
-          //指定した要素の数分を生成
-          itemBuilder: (BuildContext context, int index) {
-            // Widget型をreturnする
-            return Container(
-              color: Colors.blue.shade100,
-              child: Center(child: Text(this.texts[index],
-                style: TextStyle(fontSize: 24,),
-              )),
-            );
-          },
+          backgroundColor: Colors.tealAccent,
+        ),
+        body: Container(
+          color: Colors.white,
+          /*
+          decoration: BoxDecoration(
+            gradient: LinearGradient( // LinearGradient : 直線状グラデーション RadialGradient : 放射状グラデーション SweepGradient : 環状グラデーション
+                colors: [
+                Color.fromRGBO(180, 216, 230, 0.5), // 基本上から下にグラデーション
+                Colors.white,
+              ],
+              // グラデーションの開始位置と終了位置指定可能
+              begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+            ),
+          ),
+           */
+          child: GridView.builder(
+            padding: const EdgeInsets.all(35), //4辺すべて同じ値の余白
+            itemCount: texts.length, //要素の数　表示するデータ数の最大値（texts　listの最大値）
+            // GridViewを設定する引数を指定
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: 35,     //ボックス左右間のスペース
+              mainAxisSpacing: 35,      //ボックス上下間のスペース
+              crossAxisCount: 2,        //ボックスを横に並べる数
+
+            ),
+            //指定した要素の数分を生成
+            itemBuilder: (BuildContext context, int index) {
+
+              // Widget型sfezをreturnする
+              return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10), // containerの右左の余白幅10
+                  decoration: BoxDecoration(
+                    // shape: BoxShape.circle, // 丸い形状
+                    borderRadius: BorderRadius.circular(20), // radius設定
+                    color: this.backgroundColor[index], // Container背景色
+                    // color: Colors.transparent, // 背景色透明
+                    // border: Border.all(color: this.backgroundColor[index], width: 3),
+                    boxShadow: [ // itemに影つける
+                      BoxShadow(
+                        color: Colors.black26, //色
+                        spreadRadius: 5,
+                        blurRadius: 5,
+                        offset: Offset(1, 1),
+                      ),
+                    ],
+                  ),
+                  child: Center(child: Text(this.texts[index],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  )),
+                );
+            },
+          ),
         ),
       ),
     );
@@ -140,7 +196,7 @@ class ToDoListPageState extends State<ToDoListPage> {
                     itemBuilder: (context, index) { // itemBuilder: (BuildContext context, int index){}でもok
                       return Padding(
                         //padding: const EdgeInsets.all(8.0), // itemの幅が8.0
-                        padding: const EdgeInsets.only(left: 5.0, top: 5.0, bottom: 0.0, right: 5.0), // onlyで自由自在に指定
+                        padding: const EdgeInsets.only(left: 0.0, top: 0.0, bottom: 0.0, right: 0.0), // onlyで自由自在に指定
                         child: Slidable(
                           key: ValueKey(this.toDoList[index]), // アイテムごとに一意のキーを設定
                           startActionPane: ActionPane( // 左から出てくる

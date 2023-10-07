@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(//アプリの土台
-      title: 'Flutter Demo',
+      title: 'Flutter Apps',
       debugShowCheckedModeBanner: false,
       home: GridViewDemo(),
       theme: ThemeData(
